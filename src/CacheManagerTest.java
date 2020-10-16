@@ -1,5 +1,7 @@
 public class CacheManagerTest {
     public static void main(String args[]){
+
+        System.out.println("HI.........GIT......");
         CacheManagerTest test1 = new CacheManagerTest();
 
         String s = new String("ABCDEFGHIJKLMNOPQRSTUVWXYZ");
