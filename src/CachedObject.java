@@ -22,12 +22,12 @@ public class CachedObject implements Cacheable {
     public boolean isExpired() {
         if(dateofExpiration != null){
             if(dateofExpiration.before(new Date())){
-                System.out.println("CachedResultSet.isExpired:  Expired from Cache! EXPIRE TIME: " + dateofExpiration.toString() + " CURRENT TIME: " +
+                System.out.println("Expired from Cache! EXPIRE TIME: " + dateofExpiration.toString() + " CURRENT TIME: " +
                 (new java.util.Date()).toString());
                 return true;
             }
             else{
-                System.out.println("CachedResultSet.isExpired:  Expired not from Cache!");
+                //System.out.println("Not Expired");
                 return false;
             }
         }

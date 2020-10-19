@@ -9,13 +9,13 @@ public class CacheManager {
     static{
         try{
 
-            Thread threadCleanerUpper = new Thread(new Runnable() {
-                final int milliSecondSleepTime  = 5000;
+            Thread cleaner = new Thread(new Runnable() {
+                int milliSecondSleepTime  = 5000;
                 @Override
                 public void run() {
                     try{
                         while(true){
-                            System.out.println("ThreadCleanerUpper Scanning For Expired Objects...");
+                            System.out.println("Scanning For Expired Objects...");
                             Set keySet = cacheHashMap.keySet();
                             Iterator keys = keySet.iterator();
                             while (keys.hasNext()){
@@ -23,8 +23,7 @@ public class CacheManager {
                                 Cacheable value = (Cacheable)cacheHashMap.get(key);
                                 if(value.isExpired()){
                                     cacheHashMap.remove(key);
-                                    System.out.println("ThreadCleanerUpper Running.\n" +
-                                            "Found an Expired Object in the Cache.");
+                                    System.out.println("Found an Expired Object in the Cache: ID -> "+key.toString());
 
                                 }
                             }
@@ -38,10 +37,10 @@ public class CacheManager {
 
                 }
             });
-            threadCleanerUpper.setPriority(Thread.MIN_PRIORITY);
-            threadCleanerUpper.start();
+            cleaner.setPriority(Thread.MIN_PRIORITY);
+            cleaner.start();
         }catch (Exception e){
-            System.out.println("CacheManager.Static Block: " + e);
+            System.out.println("e");
         }
     }
 
