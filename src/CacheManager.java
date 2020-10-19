@@ -4,12 +4,13 @@ import java.util.Set;
 
 public class CacheManager {
     private static HashMap cacheHashMap = new HashMap();
-    //private static int milliSecondSleepTime = 0;
+    //static int milliSecondSleepTime = 0;
 
     static{
         try{
+
             Thread threadCleanerUpper = new Thread(new Runnable() {
-                int milliSecondSleepTime  = 5000;
+                final int milliSecondSleepTime  = 5000;
                 @Override
                 public void run() {
                     try{
@@ -24,8 +25,10 @@ public class CacheManager {
                                     cacheHashMap.remove(key);
                                     System.out.println("ThreadCleanerUpper Running.\n" +
                                             "Found an Expired Object in the Cache.");
+
                                 }
                             }
+
                             Thread.sleep(this.milliSecondSleepTime);
                         }
                     }catch (Exception e){
