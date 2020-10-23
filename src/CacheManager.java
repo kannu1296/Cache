@@ -53,6 +53,7 @@ public class CacheManager {
 
     public static void putCache(Cacheable object){
         System.out.println("hi");
+        System.out.println("hi");
         cacheHashMap.put(object.getIdentifier(), object);
     }
 
