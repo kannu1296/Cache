@@ -4,7 +4,7 @@ import java.util.Date;
 public class CachedObject implements Cacheable {
     private Date timeofExpiration = null;
     private Object identifier = null;
-    public Object object = null;
+    private Object object = null;
 
     public CachedObject(Object obj,Object id, int minutesToLive){
         this.object = obj;

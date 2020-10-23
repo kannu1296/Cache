@@ -13,24 +13,26 @@ public class CacheManager {
                 int milliSecondSleepTime  = 5000;
                 @Override
                 public void run() {
-                    try{
-                        while(true){
-                            System.out.println("Scanning For Expired Objects...");
-                            Set keySet = cacheHashMap.keySet();
-                            Iterator keys = keySet.iterator();
-                            while (keys.hasNext()){
-                                Object key = keys.next();
-                                Cacheable value = (Cacheable)cacheHashMap.get(key);
-                                if(value.isExpired()){
-                                    cacheHashMap.remove(key);
-                                    System.out.println("Found an Expired Object in the Cache: ID -> "+key.toString());
 
-                                }
+
+                    try {
+                    while(true){
+                        System.out.println("Scanning For Expired Objects...");
+                        Set keySet = cacheHashMap.keySet();
+                        Iterator keys = keySet.iterator();
+                        while (keys.hasNext()){
+                            Object key = keys.next();
+                            Cacheable value = (Cacheable)cacheHashMap.get(key);
+                            if(value.isExpired()){
+                                cacheHashMap.remove(key);
+                                System.out.println("Found an Expired Object in the Cache: ID -> "+key.toString());
+
                             }
-
-                            Thread.sleep(this.milliSecondSleepTime);
                         }
-                    }catch (Exception e){
+
+                        Thread.sleep(this.milliSecondSleepTime);
+                    }
+                    }catch (InterruptedException e){
                         e.printStackTrace();
                     }
                     return;
