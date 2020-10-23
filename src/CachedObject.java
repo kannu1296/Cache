@@ -2,7 +2,7 @@ import java.util.Calendar;
 import java.util.Date;
 
 public class CachedObject implements Cacheable {
-    private Date dateofExpiration = null;
+    private Date timeofExpiration = null;
     private Object identifier = null;
     public Object object = null;
 
@@ -10,19 +10,19 @@ public class CachedObject implements Cacheable {
         this.object = obj;
         this.identifier = id;
         if(minutesToLive != 0){
-            dateofExpiration = new Date();
+            timeofExpiration = new Date();
             Calendar cal = Calendar.getInstance();
-            cal.setTime(dateofExpiration);
+            cal.setTime(timeofExpiration);
             cal.add(cal.MINUTE, minutesToLive);
-            dateofExpiration = cal.getTime();
+            timeofExpiration = cal.getTime();
         }
     }
 
     @Override
     public boolean isExpired() {
-        if(dateofExpiration != null){
-            if(dateofExpiration.before(new Date())){
-                System.out.println("Expired from Cache! EXPIRE TIME: " + dateofExpiration.toString() + " CURRENT TIME: " +
+        if(timeofExpiration != null){
+            if(timeofExpiration.before(new Date())){
+                System.out.println("Expired from Cache! EXPIRE TIME: " + timeofExpiration.toString() + " CURRENT TIME: " +
                 (new java.util.Date()).toString());
                 return true;
             }
