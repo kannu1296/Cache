@@ -1,9 +1,11 @@
+package Java;
+
 public class CacheManagerTest {
     public static void main(String args[]){
 
         CacheManagerTest test1 = new CacheManagerTest();
 
-        String obj1 = new String("A");
+        String obj1 = "A";
 
 
         CachedObject co1 = new CachedObject(obj1, new Long(1), 1);
@@ -18,7 +20,7 @@ public class CacheManagerTest {
         if(o1 == null)
             System.out.println("OOPS!  Object not Found In The Cache : ID -> "+ o1.getIdentifier().toString());
         else
-            System.out.println("SUCCESS! " + ((String)o1.object).toString());
+            System.out.println("SUCCESS! " + o1.getObject());
 
 
     }

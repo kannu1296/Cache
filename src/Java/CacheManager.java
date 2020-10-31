@@ -1,11 +1,13 @@
+package Java;
+
+import Java.Cacheable;
+
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Set;
 
 public class CacheManager {
     private static HashMap cacheHashMap = new HashMap();
-
-    //static int milliSecondSleepTime = 0;
 
     static{
         try{
@@ -52,8 +54,7 @@ public class CacheManager {
     }
 
     public static void putCache(Cacheable object){
-        System.out.println("hi");
-        System.out.println("hi");
+
         cacheHashMap.put(object.getIdentifier(), object);
     }
 

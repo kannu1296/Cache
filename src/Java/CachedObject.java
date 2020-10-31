@@ -1,3 +1,7 @@
+package Java;
+
+import Java.Cacheable;
+
 import java.util.Calendar;
 import java.util.Date;
 
@@ -38,6 +42,10 @@ public class CachedObject implements Cacheable {
     @Override
     public Object getIdentifier() {
         return identifier;
+    }
+
+    public Object getObject(){
+        return this.object;
     }
 
 
